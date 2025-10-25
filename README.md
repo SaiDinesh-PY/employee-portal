@@ -4,9 +4,8 @@
 
 ## Project snapshot
 
-- Files scanned: **89**
 
-- Top-level entries: `authen, base, bufferinggif.gif, db.sqlite3, jobportal, manage.py, media, model.py, static, templates, turnover.pkl`
+- Top-level entries: `authen, base, db.sqlite3, jobportal, manage.py, media, model.py, static, templates, turnover.pkl`
 
 - Detected file extensions / counts:
 
