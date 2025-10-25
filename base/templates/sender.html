@@ -1,0 +1,15 @@
+{% extends 'main.html' %}
+{% block content %}
+<center>
+    <form action="" method="post">
+        {% csrf_token %}
+        <label>From:</label>
+        <input type="text" name="from" value="{{ request.user.username }}" readonly>
+        <label>To</label>
+        <input type="text" name="to" value="{{data.from}}" >
+        <label>Message:</label>
+        <input type="text" name="message">
+        <button type="submit" class="btn btn-primary">Send Email</button>
+    </form>
+</center>
+{% endblock %}

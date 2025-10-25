@@ -1,0 +1,44 @@
+<style>
+/* Profile icon container */
+h1.icon {
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+}
+
+/* Profile image */
+.profile.pic {
+    width: 50px;             /* Set desired width */
+    height: 50px;            /* Set desired height */
+    border-radius: 50%;      /* Make it circular */
+    object-fit: cover;       /* Crop image proportionally */
+    border: 2px solid #1d9bf0; /* Optional colored border */
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    cursor: pointer;         /* Show pointer on hover */
+}
+
+/* Hover effect */
+.profile.pic:hover {
+    transform: scale(1.1);   /* Slight zoom on hover */
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2); /* Shadow effect */
+}
+</style>
+<nav>
+    <div class="logo">
+        <a href="{% url 'home' %}" style="text-decoration: none;"><h1 class="name">TSI</h1></a>
+    </div>
+    <div class="menu">
+            {% if user.is_authenticated %}
+            {% if user.username == "suma" %}
+                <a href="{% url 'addco' %}">add emp details</a>
+            {% endif %}
+            <a href="{% url 'add' %}">✏️</a>
+            <span class="icon"><a href="{% url 'profile' %}"><img src="{{user.employess.image.url}}" alt="" class="profile pic"></a></span>
+            <a href="{% url 'logout' %}" style="color: aliceblue;"><pre>logout </pre></a>
+            {% else %}
+            <a href="{% url 'login' %}" style="color: aliceblue;">Login</a>
+            <a href="{% url 'register' %}" style="color: aliceblue;">Register</a>
+            {% endif %}
+
+    </div>
+</nav>

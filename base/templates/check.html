@@ -1,0 +1,68 @@
+{% extends 'main.html' %}
+{% block content %}
+<style>
+    :root {
+        --status-color: {{ color|default:"black" }};
+    }
+
+    .status-msg {
+        background-color: var(--status-color);
+        color: white;
+        padding: 12px 18px;
+        border-radius: 10px;
+        font-size: 22px;
+        margin-top: 20px;
+        width: 60%;
+        text-align: center;
+        animation: fadeIn 0.6s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(-5px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    form {
+        width: 50%;
+        margin: 20px auto;
+        text-align: left;
+        font-size: 18px;
+    }
+
+    button {
+        padding: 8px 15px;
+        border: none;
+        background-color: var(--status-color);
+        color: white;
+        font-size: 18px;
+        cursor: pointer;
+        border-radius: 8px;
+    }
+</style>
+
+<center>
+    {% if data != None %}
+        <div class="status-msg">{{ data }}</div>
+    {% endif %}
+</center>
+
+<form action="" method="GET">
+    <label for="satisfaction_level">Satisfaction Level:</label><br>
+    <input type="number" step="0.01" id="satisfaction_level" name="satisfaction_level" placeholder="float 0.0 to 1 " required ><br><br>
+
+    <label for="last_evaluation">Last Evaluation Score:</label><br>
+    <input type="number" step="0.01" id="last_evaluation" name="last_evaluation" placeholder="0.0 to 1 middle" required><br><br>
+
+    <label for="number_project">Number of Projects:</label><br>
+    <input type="number" id="number_project" name="number_project" placeholder="valUE >= 1 " required><br><br>
+
+    <label for="average_montly_hours">Average Monthly Hours:</label><br>
+    <input type="number" id="average_montly_hours" name="average_montly_hours" placeholder="based on monthly hours" required><br><br>
+
+    <label for="time_spend_company">Time Spent at Company (Years):</label><br>
+    <input type="number" id="time_spend_company" name="time_spend_company" placeholder="value 0 to n" required><br><br>
+
+    <button type="submit">Submit</button>
+</form>
+
+{% endblock %}

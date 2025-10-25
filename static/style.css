@@ -1,0 +1,125 @@
+*{
+    margin:0;
+    padding: 0;
+}
+
+/* ...existing code... */
+
+/* changed code: flatten nested selectors and fix gradient text */
+nav{
+    background: linear-gradient(
+        180deg,
+        #071021 0%,
+        #0b1220 40%,
+        #172033 100%
+    );
+    color: #e6e9ef;   
+    width:auto;
+    height: 100px;
+    display: flex;
+    justify-content:space-between;
+    align-items: center;
+}
+
+/* flattened .logo and .name */
+nav .logo{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    font-size:20px;
+    gap: 10px;
+}
+
+nav .logo .name{
+    font-family: 'Poppins', sans-serif;
+    text-transform: uppercase;
+    text-align: center;
+
+    /* correct gradient usage */
+    background-image: linear-gradient(
+        to right,
+        #0b1220, /* midnight navy */
+        #172033, /* deep slate */
+        #2b2d42, /* indigo charcoal */
+        #5b232b, /* dark maroon */
+        #2f5b3b, /* forest green */
+        #6a4b33  /* bronze brown */
+    );
+    background-size: 200% 100%;
+    background-position: 0% 50%;
+
+    /* required for gradient text */
+    -webkit-background-clip: text;
+    background-clip: text; /* best-effort */
+    -webkit-text-fill-color: transparent;
+
+    /* animate gradient */
+    animation: gradient-slide 2.5s linear infinite;
+}
+
+@keyframes gradient-slide{
+    to { background-position: 200% 50%; }
+}
+
+/* flattened .menu */
+nav .menu{
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+}
+nav .menu h1{
+    color: #e6e9ef;
+    font-family: 'Poppins', sans-serif;
+    font-size: 24px;
+    gap: 10px;
+}
+
+nav .menu a{
+    text-decoration: none;
+    font-size: 24px;
+}
+/* ...existing code... */
+
+.content{
+    background: linear-gradient(
+        180deg,
+        #071021 0%,
+        #0b1220 40%,
+        #172033 100%
+    );
+    display: flex;           /* make .content a flex container */
+    flex-direction: row;     /* align children in a row */
+    flex-wrap: nowrap;       /* keep them on one line */        /* space between boxes */
+    align-items: center;
+    justify-content: space-evenly;
+    padding: 5px;
+    overflow-x: auto;        /* allow horizontal scroll if needed */
+    height: auto;
+    width: 100%;
+
+    .box{
+    background-color: azure;
+    height: 50px;
+    min-width: 135px;        /* width for each box, adjust as needed */
+    padding: 0 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 6px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    white-space: nowrap;     /* keep text on one line */
+
+    a{
+        text-decoration: none;
+        color: black;
+        font-family: 'Poppins', sans-serif;
+        font-size: 14px;
+    }
+}
+}
+
+
+::-webkit-scrollbar{
+    display: none;
+}
+

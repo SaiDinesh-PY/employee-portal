@@ -1,0 +1,48 @@
+<style>
+   /* 🚧 Show 'Under Construction' sticker for empty links */
+.box a[href=""] {
+    position: relative;
+    pointer-events: none;  /* disable clicking */
+    opacity: 0.6;          /* dim to show inactive */
+    cursor: not-allowed;
+}
+
+/* Small sticker badge on the <pre> text */
+.box a[href=""] pre::after {
+    content: "🚧 Under Construction";
+    position:absolute;
+    top: -8px;
+    right: -25px;
+    background: #ff6b6b;
+    color: #fff;
+    font-size: 10px;
+    font-weight: 600;
+    padding: 2px 6px;
+    border-radius: 6px;
+    box-shadow: 0 0 4px rgba(255, 107, 107, 0.6);
+}
+
+</style>
+<div class="content">
+    <div class="box">
+        <a href="{% url 'notify' %}"><pre>🔔 My Notifications</pre></a>
+    </div>
+    <div class="box">
+        <a href=""><pre>📋 Tasks</pre></a>
+    </div>
+    <div class="box">
+        <a href=""><pre>📓 Requests</pre></a>
+    </div>
+    <div class="box">
+        <a href=""><pre>✅ Aprroval</pre></a>
+    </div>
+    <div class="box">
+        <a href="{% url 'about' %}"><pre>🐹 About Me</pre></a>
+    </div>
+    <div class="box">
+        <a href="{% url 'cole' %}"><pre>👥 Colleagues</pre></a>
+    </div>
+    <div class="box">
+        <a href="{% url 'check' %}"><pre>📚 Check</pre></a>
+    </div>
+</div>

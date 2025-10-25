@@ -1,0 +1,26 @@
+{% extends 'main.html' %}
+{% block content %}
+<center>
+    <h1>
+        this is register page 
+    </h1>
+    {% if msg is not null %}
+        <h1>{{msg}}</h1>
+    {% endif %}
+    <form action="" method="POST">
+        {% csrf_token %}
+        <label for="">first _name</label>
+        <input type="text" name="f_name"><br><br>
+        <label for="">last _name</label>
+        <input type="text" name="l_name"><br><br>
+        <label for="">email</label>
+        <input type="email" name="e_name"><br><br>
+        <label for="">username</label>
+        <input type="text" name="u_name"><br><br>
+        <label for="">password</label>
+        <input type="password" name="p_name"><br><br>
+        <input type="submit">
+    </form>
+    <h3>Yeah if you are first time visiting this then first it would good if u goto about me section </h3>
+</center>
+{% endblock %}

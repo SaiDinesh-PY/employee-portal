@@ -1,0 +1,121 @@
+{% extends 'main.html' %}
+{% block content %}
+{% load static %}
+    <style>
+/* Container */
+.talk-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 40px;
+    font-family: "Segoe UI", Arial, sans-serif;
+}
+
+/* Heading and description */
+.talk-header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.talk-header h2 {
+    font-size: 28px;
+    color: #1d9bf0;
+    margin-bottom: 10px;
+}
+
+.talk-header p {
+    font-size: 16px;
+    color: #555;
+}
+
+/* Each tweet-like card */
+.talk-card {
+    background: #fff;
+    border: 1px solid #e6ecf0;
+    border-radius: 15px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+    width: 500px;
+    padding: 20px;
+    margin-bottom: 20px;
+    transition: transform 0.1s ease, box-shadow 0.2s ease;
+}
+
+.talk-card:hover {
+    transform: scale(1.01);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+/* Username line */
+.talk-user {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.talk-user img {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+}
+.talk-user a{
+    text-decoration: none;
+    color: linear-gradient(
+        180deg,
+        #071021 0%,
+        #0b1220 40%,
+        #172033 100%
+    );
+}
+.talk-user span {
+    font-weight: 600;
+    color: #333;
+}
+
+/* Post title and content */
+.talk-title {
+    font-size: 18px;
+    font-weight: 600;
+    color: #14171a;
+    margin-bottom: 8px;
+}
+
+.talk-desc {
+    font-size: 15px;
+    color: #444;
+    line-height: 1.5;
+}
+
+/* Divider */
+.talk-divider {
+    height: 1px;
+    background: #e6ecf0;
+    margin: 10px 0;
+}
+</style>
+
+{% load static %}
+<div class="talk-container">
+    <div class="talk-header">
+        <h1>Notifications</h1>
+        <hr style="width: 60%; margin: 20px auto; border: none; height: 2px; background-color: #e6ecf0;">
+    </div>
+
+    {% for i in data %}
+    <div class="talk-card">
+        <div class="talk-user">
+                <img src="{{ i.user.employess.image.url }}" alt="User" width="70" height="70" style="border-radius:50%;">
+            <span>{{ i.From }}</span>
+        </div>
+
+        <div class="talk-divider"></div>
+        <div class="talk-title">{{ i.to }}</div>
+        <div class="talk-desc">{{ i.message }}</div>
+        <a href="{% url 'sender' i.id %}">Send</a>
+    </div>
+    {% endfor %}
+</div>
+
+<center><a href="{% url 'send' %}">📨 Send</a></center>
+
+{% endblock %}

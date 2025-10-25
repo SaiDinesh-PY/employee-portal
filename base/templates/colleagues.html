@@ -1,0 +1,84 @@
+{% extends 'main.html' %}
+{% block content %}
+<style>
+/* Outer page container */
+body {
+    background: #f5f7fa;
+    font-family: "Segoe UI", Arial, sans-serif;
+}
+
+/* Container wrapping all employee cards */
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 25px;
+    margin: 40px auto;
+    max-width: 1200px;
+}
+
+/* Each employee card */
+.container > div {
+    background: #fff;
+    border-radius: 15px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    padding: 20px;
+    width: 280px;
+    text-align: center;
+    transition: all 0.2s ease-in-out;
+}
+
+.container > div:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+}
+
+/* Employee image */
+.container img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 3px solid #1d9bf0;
+    margin-bottom: 15px;
+}
+
+/* Employee name */
+.container h2 {
+    font-size: 20px;
+    color: #222;
+    margin-bottom: 8px;
+}
+
+/* Position and department */
+.container span {
+    display: block;
+    color: #555;
+    font-size: 15px;
+    margin: 3px 0;
+}
+
+/* Email and phone style */
+.container span:last-child {
+    color: #1d9bf0;
+    font-weight: 500;
+}
+</style>
+
+<div class="container">
+    {% for i in data %}
+    <div>
+        {% if i.image %}
+            <img src="{{ i.image.url }}" alt="{{ i.name }}">
+        {% else %}
+            <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="user">
+        {% endif %}
+        <h2>{{ i.name }}</h2>
+        <span>{{ i.position }}</span>
+        <span>{{ i.department }}</span>
+        <span>{{ i.email }}</span>
+        <span>{{ i.phone }}</span>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

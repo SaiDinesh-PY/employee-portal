@@ -1,0 +1,64 @@
+{% extends 'main.html' %}
+{% block content %}
+<style>
+    .center {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 50px;
+    font-family: "Segoe UI", Arial, sans-serif;
+    background-color: #f7f8fa;
+    padding: 30px;
+    border-radius: 15px;
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+
+    /* Heading */
+    .center h1 {
+        font-size: 28px;
+        color: #1d9bf0;
+        margin-bottom: 20px;
+    }
+
+    /* Profile image */
+    .center img {
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 3px solid #1d9bf0;
+        margin-bottom: 20px;
+    }
+
+    /* Info spans */
+    .center span {
+        display: block;
+        font-size: 16px;
+        color: #333;
+        margin-bottom: 8px;
+        font-weight: 500;
+    }
+
+    /* Optional hover effect for image */
+    .center img:hover {
+        transform: scale(1.05);
+        transition: transform 0.2s ease;
+    }
+</style>
+    <center>
+        <div class="center">
+            <h1>profile</h1>
+        <img src="{{e.image.url}}" alt="">
+        <span>name:{{e.name}}</span>
+        <span>position:{{e.position}}</span>
+        <span>department:{{e.department}}</span>
+        <span>email:{{e.email}}</span>
+        <span>phone:{{e.phone}}</span>
+        </div>
+        
+    </center>
+{% endblock %}
