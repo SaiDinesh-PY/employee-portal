@@ -1,0 +1,8 @@
+[build]
+builder = "NIXPACKS"
+
+[env]
+PORT = "8000"
+
+[deploy]
+startCommand = "gunicorn jobportal.wsgi --bind 0.0.0.0:$PORT"
